@@ -1,14 +1,12 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 
-export default function Home({
-  allPostsData
-}: {
+export default function Home({ allPostsData }: {
   allPostsData: {
     date: string
     title: string
@@ -22,6 +20,12 @@ export default function Home({
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hello, I'm Keith. I am a software engineer and certified IT professional.</p>
+        <h1>
+          Read{' '}
+          <Link href="/posts/first-post">
+            <a>This page!</a>
+          </Link>
+        </h1>
         <p>
           (This is a sample website - you’ll be building a site like this in{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
