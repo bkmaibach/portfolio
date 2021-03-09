@@ -1,21 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.scss'
+import Button from './button'
+import buttonStyles from './button/button.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
+import { cn } from '../lib/util'
 
 const name = 'Keith Maibach'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Keith Maibach Portfolio'
 
 export default function Layout({
-  children,
-  home
+  children
 }: {
   children: React.ReactNode
-  home?: boolean
 }) {
   return (
-    <div className={styles.container}>
+    <div id={styles.layout} className={cn(styles.landing, styles.isPreload)}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -30,50 +31,24 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <title>{siteTitle}</title>
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+      <header id={styles.header}>
+        <h1 id="logo"><Link href="/">Keith Maibach's App Portfolio</Link></h1>
+        <nav id="nav">
+          <ul>
+            <li><Link href="/">Projects</Link></li>
+            <li><Link href="/work"><a>Work</a></Link></li>
+            <li><Link href="/skills"><a>Skills</a></Link></li>
+            <li><Link href="/education"><a>Education</a></Link></li>
+            <li><Button className={cn(buttonStyles.nav, buttonStyles.primary)}>Get in Touch</Button></li>
+          </ul>
+        </nav>
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      {children}
     </div>
   )
 }
