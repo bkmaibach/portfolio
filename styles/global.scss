@@ -2,6 +2,7 @@
 @import 'libs/functions';
 @import 'libs/mixins';
 @import 'libs/vendor';
+@import 'libs/variables';
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
 @import url('/webfonts/fontawesome-all.min.css');
@@ -37,9 +38,6 @@
 							0 ($size * -1) 0 $fg;
 		}
 	}
-
-	$size-wrapper-pad-tb: 6em;
-	$size-wrapper-pad-lr: 3em;
 
 // Reset.
 // Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
@@ -1567,14 +1565,6 @@
 				}
 			}
 
-		/* Banner */
-
-			#banner {
-				.content {
-					padding: $size-wrapper-pad-tb;
-				}
-			}
-
 		/* Footer */
 
 			#footer {
@@ -1644,31 +1634,6 @@
 
 			.wrapper {
 				padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr;
-			}
-
-		/* Banner */
-
-			#banner {
-				background-attachment: scroll;
-
-				.goto-next {
-					height: 7em;
-				}
-
-				.content {
-					padding: ($size-wrapper-pad-tb * 2) 0;
-					text-align: center;
-
-					header {
-						display: block;
-						margin: 0 0 _size(element-margin) 0;
-						text-align: center;
-					}
-
-					.image {
-						margin: 0;
-					}
-				}
 			}
 
 		/* Footer */
@@ -1775,32 +1740,6 @@
 
 			#header {
 				display: none;
-			}
-
-		/* Banner */
-
-			#banner {
-				box-shadow: 0 0.125em 0.5em 0 rgba(0,0,0,0.25);
-				min-height: calc(100vh - 44px);
-
-				&:before {
-					height: calc(100vh - 44px);
-				}
-
-				.content {
-					padding: ($size-wrapper-pad-tb * 1.25) $size-wrapper-pad-lr ($size-wrapper-pad-tb * 1.5) $size-wrapper-pad-lr;
-
-					header {
-						h2 {
-							font-size: 1.5em;
-						}
-					}
-
-					.image {
-						height: 9em;
-						width: 9em;
-					}
-				}
 			}
 
 		/* Nav */
@@ -1977,14 +1916,6 @@
 
 			.wrapper {
 				padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr;
-			}
-
-		/* Banner */
-
-			#banner {
-				.content {
-					padding: $size-wrapper-pad-tb ($size-wrapper-pad-lr * 1.25) ($size-wrapper-pad-tb * 1.75) ($size-wrapper-pad-lr * 1.25);
-				}
 			}
 
 		/* Footer */

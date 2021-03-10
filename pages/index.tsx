@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import styles from './home.module.scss'
+import Layout from '../components/layout'
+import Banner from '../components/banner'
 import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
+import Image from 'next/image'
 
 export default function Home({ allPostsData }: {
   allPostsData: {
@@ -15,7 +17,7 @@ export default function Home({ allPostsData }: {
 }) {
   return (
     <Layout>
-      <h2>TODO</h2>
+      <Banner />
     </Layout>
   )
 }
