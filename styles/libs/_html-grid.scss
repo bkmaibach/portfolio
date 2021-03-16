@@ -51,7 +51,7 @@
 				}
 
 			// Gutters.
-				&.gtr-uniform {
+				&.gtrUniform {
 					> * {
 						> :last-child {
 							margin-bottom: 0;
@@ -132,7 +132,7 @@
 									}
 
 									// Uniform.
-										&.gtr-uniform {
+										&.gtrUniform {
 											margin-top: $guttersCols * $multiplier * -1;
 
 											> * {

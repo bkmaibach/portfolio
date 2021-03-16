@@ -1,4 +1,5 @@
 import styles from './button.module.scss'
+import utilStyles from 'styles/utils.module.scss'
 
 export default function Button({ className, onClick, children }: {
   className?: string,
