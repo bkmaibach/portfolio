@@ -81,7 +81,7 @@
   }
 }
 
-body.is-touch {
+body.isTouch {
   #banner {
     background-attachment: scroll;
   }
@@ -97,35 +97,10 @@ body.is-touch {
 }
 
 @include breakpoint('<=medium') {
-  #banner {
-    background-attachment: scroll;
-
-    .goto-next {
-      height: 7em;
-    }
-
-    .content {
-      padding: ($size-wrapper-pad-tb * 2) 0;
-      text-align: center;
-
-      header {
-        display: block;
-        margin: 0 0 _size(element-margin) 0;
-        text-align: center;
-      }
-
-      .image {
-        margin: 0;
-      }
-    }
-  }
-}
-
-@include breakpoint('<=medium') {
     #banner {
       background-attachment: scroll;
 
-      .goto-next {
+      .gotoNext {
         height: 7em;
       }
 

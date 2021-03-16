@@ -34,7 +34,6 @@
 		}
 
 	}
-
 }
 
 /// Applies padding to an element, taking the current element-margin value into account.
@@ -75,4 +74,18 @@
 
 	@return url("data:image/svg+xml;charset=utf8,#{$svg}");
 
+}
+
+
+@mixin line-icon($bg: _palette(bg), $fg: _palette(fg-bold)) {
+	@include icon;
+	$size: 1px;
+
+	&:before {
+		color: $bg !important;
+		text-shadow:	$size 0 0 $fg,
+						($size * -1) 0 0 $fg,
+						0 $size 0 $fg,
+						0 ($size * -1) 0 $fg;
+	}
 }

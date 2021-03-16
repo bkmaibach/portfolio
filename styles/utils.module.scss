@@ -1,0 +1,390 @@
+@import '/styles/libs/vars';
+@import '/styles/libs/functions';
+@import '/styles/libs/mixins';
+@import '/styles/libs/variables';
+@import '/styles/libs/vendor';
+@import '/styles/libs/breakpoints';
+@import '/styles/libs/html-grid';
+@import url('/webfonts/fontawesome-all.min.css');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+
+.gotoNext {
+  border: 0;
+  bottom: 0;
+  display: block;
+  height: 5em;
+  left: 50%;
+  margin: 0 0 0 -5em;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 10em;
+  white-space: nowrap;
+  width: 10em;
+  z-index: 1;
+
+  &:before {
+    background-image: url('/images/arrow.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    height: 1.5em;
+    left: 50%;
+    margin: -0.75em 0 0 -1em;
+    position: absolute;
+    top: 50%;
+    width: 2em;
+    z-index: 1;
+  }
+}
+
+.box {
+  border-radius: _size(border-radius);
+  border: solid 1px _palette(border);
+  margin-bottom: _size(element-margin);
+  padding: 1.5em;
+
+  > :last-child,
+  > :last-child > :last-child,
+  > :last-child > :last-child > :last-child {
+    margin-bottom: 0;
+  }
+
+  &.alt {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+ul.icons {
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: inline-block;
+    height: 2.5em;
+    line-height: 2.5em;
+    padding: 0 0.5em;
+
+    .icon {
+      font-size: 0.8em;
+
+      &:before {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+
+.icon {
+  @include icon;
+  border-bottom: none;
+  position: relative;
+
+  > .label {
+    display: none;
+  }
+
+  &:before {
+    line-height: inherit;
+  }
+
+  &.solid {
+    &:before {
+      font-weight: 900 !important;
+    }
+  }
+
+  &.brands {
+    &:before {
+      font-family: 'Font Awesome 5 Brands' !important;
+    }
+  }
+
+  &.alt {
+    @include line-icon;
+  }
+
+  &.major {
+    background: _palette(accent2);
+    border-radius: 100%;
+    cursor: default;
+    display: inline-block;
+    height: 6em;
+    line-height: 5.65em;
+    margin: 0 0 _size(element-margin) 0;
+    text-align: center;
+    width: 6em;
+
+    &:before {
+      font-size: 2.25em;
+    }
+
+    &.alt {
+      @include line-icon(_palette(accent2));
+    }
+  }
+}
+
+body.isTouch {
+  #banner {
+    background-attachment: scroll;
+  }
+}
+
+/* Footer */
+
+#footer {
+  background: _palette(accent2);
+  padding: $size-wrapper-pad-tb 0;
+  text-align: center;
+
+  .icons {
+    .icon {
+      &.alt {
+        @include line-icon(_palette(accent2), _palette(fg-light));
+      }
+    }
+  }
+
+  .copyright {
+    color: _palette(fg-light);
+    font-size: 0.8em;
+    line-height: 1em;
+    margin: 2em 0 0 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+      border-left: solid 1px _palette(border);
+      display: inline-block;
+      list-style: none;
+      margin-left: 1.5em;
+      padding-left: 1.5em;
+
+      &:first-child {
+        border-left: 0;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+}
+
+
+
+footer {
+  &.major {
+    margin: (_size(element-margin) * 2) 0 0 0;
+  }
+}
+
+li.alt {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    border-top: solid 1px _palette(border);
+    padding: 0.5em 0;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.image {
+  border-radius: _size(border-radius);
+  border: 0;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url('/images/overlay.png');
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  img {
+    border-radius: _size(border-radius);
+    display: block;
+  }
+
+  &.left {
+    float: left;
+    margin: 0 1.5em 1em 0;
+    top: 0.25em;
+  }
+
+  &.right {
+    float: right;
+    margin: 0 0 1em 1.5em;
+    top: 0.25em;
+  }
+
+  &.left,
+  &.right {
+    max-width: 40%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.fit {
+    display: block;
+    margin: 0 0 _size(element-margin) 0;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+section, article {
+  &.centered {
+    text-align: center;
+  }
+}
+
+hr.major {
+  margin: (_size(element-margin) * 2) 0;
+}
+
+header.major {
+  margin: 0 0 (_size(element-margin) * 2) 0;
+  position: relative;
+  text-align: center;
+
+  &:after {
+    background: _palette(accent1);
+    content: '';
+    display: inline-block;
+    height: 0.2em;
+    max-width: 20em;
+    width: 75%;
+  }
+}
+
+.actions {
+  @include vendor('display', 'flex');
+  cursor: default;
+  list-style: none;
+  margin-left: (_size(element-margin) * -0.5);
+  padding-left: 0;
+
+  li {
+    padding: 0 0 0 (_size(element-margin) * 0.5);
+    vertical-align: middle;
+  }
+
+  &.centered {
+    @include vendor('justify-content', 'center');
+    width: 100%;
+    margin-left: 0;
+
+    li {
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  &.stacked {
+    @include vendor('flex-direction', 'column');
+    margin-left: 0;
+
+    li {
+      padding: (_size(element-margin) * 0.65) 0 0 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.fit {
+    width: calc(100% + #{_size(element-margin) * 0.5});
+
+    li {
+      @include vendor('flex-grow', '1');
+      @include vendor('flex-shrink', '1');
+      width: 100%;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    &.stacked {
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint('<=small') {
+
+  $size-wrapper-pad-tb: 3.25em;
+  $size-wrapper-pad-lr: 1.5em;
+
+    header.major {
+        margin: 0 0 _size(element-margin) 0;
+      }
+}
+
+@include breakpoint('<=xsmall') {
+  .actions {
+    &:not(.fixed) {
+      @include vendor('flex-direction', 'column');
+      margin-left: 0;
+      width: 100% !important;
+  
+      li {
+        @include vendor('flex-grow', '1');
+        @include vendor('flex-shrink', '1');
+        padding: (_size(element-margin) * 0.5) 0 0 0;
+        text-align: center;
+        width: 100%;
+  
+        > * {
+          width: 100%;
+        }
+  
+        &:first-child {
+          padding-top: 0;
+        }
+  
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"],
+        button,
+        .button {
+          width: 100%;
+  
+          &.icon {
+            &:before {
+              margin-left: -0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

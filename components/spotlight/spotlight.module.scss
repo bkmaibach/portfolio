@@ -1,0 +1,219 @@
+@import '/styles/libs/vars';
+@import '/styles/libs/functions';
+@import '/styles/libs/mixins';
+@import '/styles/libs/variables';
+@import '/styles/libs/vendor';
+@import '/styles/libs/breakpoints';
+@import '/styles/libs/html-grid';
+@import url('/webfonts/fontawesome-all.min.css');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+
+.spotlight {
+  background-attachment:	fixed;
+  background-position:	center center;
+  background-size:		cover;
+  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.25);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  // Force spotlights to stack in reverse order (needed for our box
+  // shadows to overlap stuff in the right direction).
+  @for $i from 1 through _misc(max-spotlight) {
+    &:nth-last-of-type(#{$i}) {
+      z-index: #{$i};
+    }
+  }
+
+  &:before {
+    background-image: url('/images/overlay.png');
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .image.main {
+    display: none;
+
+    img {
+      position: relative;
+    }
+  }
+
+  .content {
+    @include vendor('transform', 'translate(0,0)');
+    @include vendor('transition', 'transform 1s ease, opacity 1s ease');
+    background: _palette(bg-transparent);
+    border-style: solid;
+    opacity: 1;
+    position: absolute;
+  }
+
+  .gotoNext {
+    @include vendor('transform', 'translate(0,0)');
+    @include vendor('transition', 'transform 0.75s ease, opacity 1s ease-in');
+    @include vendor('transition-delay', '0.5s');
+    opacity: 1;
+  }
+
+  &.top, &.bottom {
+    .content {
+      left: 0;
+      padding: ($size-wrapper-pad-tb * 0.85) 0 (($size-wrapper-pad-tb * 0.85) - _size(element-margin)) 0;
+      width: 100%;
+    }
+  }
+
+  &.top {
+    .content {
+      border-bottom-width: 0.35em;
+      top: 0;
+    }
+  }
+
+  &.bottom {
+    .content {
+      border-top-width: 0.35em;
+      bottom: 0;
+      border-color: _palette(accent1);
+    }
+  }
+
+  &.left, &.right {
+    .content {
+      height: 101%;
+      padding: $size-wrapper-pad-tb $size-wrapper-pad-lr;
+      top: 0;
+      width: 28em;
+    }
+  }
+
+  &.left {
+    .content {
+      border-right-width: 0.35em;
+      left: 0;
+      border-color: _palette(accent4);
+    }
+  }
+
+  &.right {
+    .content {
+      border-left-width: 0.35em;
+      right: 0;
+      border-color: _palette(accent3);
+    }
+  }
+
+  &.inactive {
+    .content {
+      opacity: 0;
+    }
+
+    .gotoNext {
+      @include vendor('transform', 'translate(0,1.5em)');
+      opacity: 0;
+    }
+
+    &.top {
+      .content {
+        @include vendor('transform', 'translate(0,-5em)');
+      }
+    }
+
+    &.bottom {
+      .content {
+        @include vendor('transform', 'translate(0,5em)');
+      }
+    }
+
+    &.left {
+      .content {
+        @include vendor('transform', 'translate(-5em,0)');
+      }
+    }
+
+    &.right {
+      .content {
+        @include vendor('transform', 'translate(5em,0)');
+      }
+    }
+  }
+
+	@include breakpoint('<=medium') {
+
+		$size-wrapper-pad-tb: 4.5em;
+		$size-wrapper-pad-lr: 2.5em;
+
+			.spotlight {
+				background-attachment: scroll;
+				height: auto;
+
+				.image.main {
+					display: block;
+					margin: 0;
+					max-height: 40vh;
+					overflow: hidden;
+				}
+
+				.content {
+					background-color: _palette(bg);
+					border-width: 0 !important;
+					border-top-width: 0.35em !important;
+					bottom: auto !important;
+					left: auto !important;
+					padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
+					position: relative;
+					right: auto !important;
+					text-align: center;
+					top: auto !important;
+					width: 100% !important;
+
+					.actions {
+						@include vendor('justify-content', 'center');
+						width: 100%;
+						margin-left: 0;
+
+						li {
+							&:first-child {
+								padding-left: 0;
+							}
+						}
+					}
+				}
+
+				.gotoNext {
+					display: none;
+				}
+			}
+	}
+
+  @include breakpoint('<=small') {
+
+		$size-wrapper-pad-tb: 3.25em;
+		$size-wrapper-pad-lr: 1.5em;
+
+    .gotoNext {
+      &:before {
+        height: 0.8em;
+        margin: -0.4em 0 0 -0.6em;
+        width: 1.2em;
+      }
+    }
+
+    box-shadow: 0 0.125em 0.5em 0 rgba(0,0,0,0.25);
+
+    .image.main {
+      max-height: 60vh;
+    }
+
+    .content {
+      border-top-width: 0.2em !important;
+      padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
+    }
+
+  }
+
+}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './banner.module.scss'
-import { cn } from '../../lib/util'
+import utilStyles from 'styles/utils.module.scss'
+import { cn } from 'lib/util'
 
 export default function Banner() {
   return (
@@ -11,16 +12,16 @@ export default function Banner() {
           <p>And there are no hoverboards or flying cars.<br />
           Just apps. Lots of mother flipping apps.</p>
         </header>
-        <span className={styles.image}>
+        <span className={cn(utilStyles.image, styles.image)}>
           <Image
             src="/images/profile.jpg"
             alt="Picture of the author"
-            width={312}
-            height={312}
+            width={360}
+            height={360}
           />
         </span>
       </div>
-      <a href="#one" className="goto-next scrolly">Next</a>
+      <a href="#one" className={cn(styles.gotoNext, utilStyles.gotoNext)}>Next</a>
     </section>
   )
 }
