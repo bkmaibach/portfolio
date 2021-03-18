@@ -7,9 +7,6 @@
 @import url('/webfonts/fontawesome-all.min.css');
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
 
-// input[type="submit"],
-// input[type="reset"],
-// input[type="button"],
 .button {
   @include vendor('appearance', 'none');
   @include vendor('transition', ('background-color #{_duration(transition)} ease-in-out', 'color #{_duration(transition)} ease-in-out', 'box-shadow #{_duration(transition)} ease-in-out'));
@@ -83,4 +80,15 @@
     cursor: default;
     opacity: 0.25;
   }
+
+
+	@include breakpoint('<=xsmall') {
+
+		$size-wrapper-pad-tb: 3em;
+		$size-wrapper-pad-lr: 1.25em;
+
+    .button {
+      padding: 0;
+    }
+	}
 }

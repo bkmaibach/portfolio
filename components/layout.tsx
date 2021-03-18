@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.scss'
@@ -5,7 +6,8 @@ import Button from 'components/button'
 import buttonStyles from './button/button.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
-import { cn } from '../lib/util'
+import { cn } from 'lib/cn'
+import { useIsSmallDevice } from 'lib/use-is-small-device'
 
 const name = 'Keith Maibach'
 export const siteTitle = 'Keith Maibach Portfolio'
@@ -15,8 +17,11 @@ export default function Layout({
 }: {
   children: React.ReactNode
 }) {
+  const isSmallDevice = useIsSmallDevice()
+  const [navVisible, setNavVisible] = useState(false)
+  console.log(isSmallDevice)
   return (
-    <div id={styles.layout} className={cn(styles.landing, styles.isPreload)}>
+    <div id={styles.layout} className={cn(styles.landing, (navVisible && isSmallDevice) ? styles.navPanelVisible : '')}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -36,8 +41,24 @@ export default function Layout({
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         <title>{siteTitle}</title>
       </Head>
-      <header id={styles.header}>
-        <h1 id="logo"><Link href="/">Keith Maibach's App Portfolio</Link></h1>
+      {isSmallDevice && <>
+        <div id={styles.titleBar}>
+          <a className={styles.toggle} onClick={() => setNavVisible(!navVisible)}></a>
+          <span className={styles.title}>
+            <a href="/">Keithernet Portfolio</a>
+          </span>
+        </div>
+        <div id={styles.navPanel}>
+          <nav>
+            <a className={cn(styles.link, styles.depth0)}>Project</a>
+            <a className={cn(styles.link, styles.depth0)}>Work</a>
+            <a className={cn(styles.link, styles.depth0)}>Skills</a>
+            <a className={cn(styles.link, styles.depth0)}>Education</a>
+          </nav>
+        </div>
+      </>}
+      {!isSmallDevice && <header id={styles.header}>
+        <h1 id="logo"><Link href="/">Keithernet Portfolio</Link></h1>
         <nav id="nav">
           <ul>
             <li><Link href="/">Projects</Link></li>
@@ -47,8 +68,19 @@ export default function Layout({
             <li><Button className={cn(buttonStyles.nav, buttonStyles.primary)}>Get in Touch</Button></li>
           </ul>
         </nav>
-      </header>
+      </header>}
       {children}
+      <footer id={styles.footer}>
+        <ul className={cn(utilStyles.icons, styles.icons)}>
+          <li><a href="#" className={cn(utilStyles.icon, styles.icon, utilStyles.brands, styles.alt, "fa-linkedin-in")}><span className={utilStyles.label}>LinkedIn</span></a></li>
+          <li><a href="#" className={cn(utilStyles.icon, styles.icon, utilStyles.brands, styles.alt, "fa-instagram")}><span className={utilStyles.label}>Instagram</span></a></li>
+          <li><a href="#" className={cn(utilStyles.icon, styles.icon, utilStyles.brands, styles.alt, "fa-github")}><span className={utilStyles.label}>GitHub</span></a></li>
+          <li><a href="#" className={cn(utilStyles.icon, styles.icon, utilStyles.brands, styles.alt, "fa-envelope")}><span className={utilStyles.label}>Email</span></a></li>
+        </ul>
+        <ul className={styles.copyright}>
+          <li>&copy; Keithernet Portfolio. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </footer>
     </div>
   )
 }

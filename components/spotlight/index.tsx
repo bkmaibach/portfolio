@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './spotlight.module.scss'
 import utilStyles from 'styles/utils.module.scss'
-import { cn } from 'lib/util'
+import { cn } from 'lib/cn'
 
 export default function Spotlight({edgeStyle, id, nextId, imgSrc, children}:
   {edgeStyle: string, id: string, nextId: string, imgSrc: string, children: React.ReactNode}) {

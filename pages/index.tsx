@@ -7,11 +7,13 @@ import Banner from '../components/banner'
 import Button from 'components/button'
 import Wrapper from 'components/wrapper'
 import IconSection from 'components/icon-section'
+import CTAForm from 'components/cta-form'
 import Spotlight from 'components/spotlight'
 import spotlightStyles from 'components/spotlight/spotlight.module.scss'
+import wrapperStyles from 'components/wrapper/wrapper.module.scss'
 import utilStyles from '../styles/utils.module.scss'
-import { getSortedPostsData } from '../lib/posts'
-import { cn } from 'lib/util'
+import { getSortedPostsData } from 'lib/posts'
+import { cn } from 'lib/cn'
 
 export default function Home({ allPostsData }: {
   allPostsData: {
@@ -20,10 +22,11 @@ export default function Home({ allPostsData }: {
     id: string
   }[]
 }) {
+
   return (
     <Layout>
       <Banner />
-      <Spotlight edgeStyle={spotlightStyles.bottom} id='one' nextId='two' imgSrc='images/pic02.jpg'>
+      <Spotlight edgeStyle={spotlightStyles.bottom} id='one' nextId='two' imgSrc='/images/pic02.jpg'>
         <div className="container">
           <div className="row">
             <div className="col-4 col-12-medium">
@@ -49,27 +52,27 @@ export default function Home({ allPostsData }: {
           </div>
         </div>
       </Spotlight>
-      <Spotlight edgeStyle={spotlightStyles.right} id='two' nextId='three' imgSrc='images/pic03.jpg'>
+      <Spotlight edgeStyle={spotlightStyles.right} id='two' nextId='three' imgSrc='/images/pic03.jpg'>
         <header>
           <h2>Interdum amet non magna accumsan</h2>
           <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
         </header>
         <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-        <ul className={utilStyles.actions}>
+        <ul className={cn(utilStyles.actions, spotlightStyles.actions)}>
           <li><Button>Learn More</Button></li>
         </ul>
       </Spotlight>
-      <Spotlight edgeStyle={spotlightStyles.left} id='three' nextId='four' imgSrc='images/pic04.jpg'>
+      <Spotlight edgeStyle={spotlightStyles.left} id='three' nextId='four' imgSrc='/images/pic04.jpg'>
         <header>
           <h2>Interdum amet non magna accumsan</h2>
           <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
         </header>
-        <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-        <ul className={utilStyles.actions}>
+        <p>AAA Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+        <ul className={cn(utilStyles.actions, spotlightStyles.actions)}>
           <li><Button>Learn More</Button></li>
         </ul>
       </Spotlight>
-      <Wrapper id='four'>
+      <Wrapper style={wrapperStyles.style1} fadeStyle={wrapperStyles.fadeDown} id='four'>
         <header className={cn(utilStyles.major)}>
             <h2>Accumsan sed tempus adipiscing blandit</h2>
             <p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
@@ -113,6 +116,13 @@ export default function Home({ allPostsData }: {
               <li><Button>Button text here</Button></li>
             </ul>
           </footer>
+      </Wrapper>
+      <Wrapper id='five' style={wrapperStyles.style2} fadeStyle={wrapperStyles.fadeUp}>
+        <header>
+          <h2>Magna faucibus lorem diam</h2>
+          <p>Ante metus praesent faucibus ante integer id accumsan eleifend</p>
+        </header>
+        <CTAForm/>
       </Wrapper>
     </Layout>
   )

@@ -1,12 +1,13 @@
 import styles from './button.module.scss'
 import utilStyles from 'styles/utils.module.scss'
 
-export default function Button({ className, onClick, children }: {
+export default function Button({ className, onClick, children, ...props }: {
   className?: string,
   onClick?: (any) => any,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  props?: string[]
 }) {
-  return <a className={`${styles.button} ${className}`}>
+  return <button className={`${styles.button} ${className ? className : ''}`} {...props}>
     {children}
-  </a>
+  </button>
 }
