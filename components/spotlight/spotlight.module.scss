@@ -180,25 +180,12 @@
   $size-wrapper-pad-lr: 2.5em;
 
     .spotlight {
-      // background-attachment: scroll;
-      // height: auto;
-
-      .image.main {
-        // display: block;
-        // margin: 0;
-        // height: 40vh;
-        // overflow: hidden;
-      }
 
       .content {
         background-color: _palette(bg);
         border-width: 0 !important;
         border-top-width: 0.35em !important;
         padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
-        // position: relative;
-        // right: auto !important;
-        // left: auto !important;
-        // bottom: auto !important;
         text-align: center;
         top: auto !important;
         width: 100% !important;
