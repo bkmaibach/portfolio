@@ -253,9 +253,9 @@
 		$size-wrapper-pad-tb: 4.5em;
 		$size-wrapper-pad-lr: 2.5em;
 
-			#footer {
-				padding: $size-wrapper-pad-tb 0;
-			}
+    #footer {
+      padding: $size-wrapper-pad-tb 0;
+    }
 	}
 
   @include breakpoint('<=medium') {
@@ -263,9 +263,9 @@
 		$size-wrapper-pad-tb: 4.5em;
 		$size-wrapper-pad-lr: 2.5em;
 
-			#footer {
-				padding: $size-wrapper-pad-tb 0;
-			}
+    #footer {
+      padding: $size-wrapper-pad-tb 0;
+    }
 	}
 
   @include breakpoint('<=small') {

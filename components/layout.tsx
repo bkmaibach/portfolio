@@ -19,7 +19,6 @@ export default function Layout({
 }) {
   const isSmallDevice = useIsSmallDevice()
   const [navVisible, setNavVisible] = useState(false)
-  console.log(isSmallDevice)
   return (
     <div id={styles.layout} className={cn(styles.landing, (navVisible && isSmallDevice) ? styles.navPanelVisible : '')}>
       <Head>

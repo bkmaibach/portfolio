@@ -7,7 +7,9 @@ export default function Spotlight({edgeStyle, id, nextId, imgSrc, children}:
   {edgeStyle: string, id: string, nextId: string, imgSrc: string, children: React.ReactNode}) {
   return (
     <section id={id} className={cn(styles.spotlight, edgeStyle)}>
-    <span className={cn(utilStyles.image, styles.image, utilStyles.fit, styles.main)}>
+    {/* <h1>PLEASE</h1> */}
+    <span className={cn(styles.image, utilStyles.image, utilStyles.fit, styles.main)}>
+    {/* <span className={styles.content}> */}
       <Image
         src={imgSrc}
         alt=""

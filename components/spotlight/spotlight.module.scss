@@ -14,7 +14,7 @@
   background-size:		cover;
   box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.25);
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
 
   // Force spotlights to stack in reverse order (needed for our box
@@ -37,7 +37,6 @@
 
   .image.main {
     display: none;
-
     img {
       position: relative;
     }
@@ -148,7 +147,7 @@
 
   $size-wrapper-pad-tb: 4.5em;
   $size-wrapper-pad-lr: 2.5em;
-  
+
     .spotlight {
       &.top {
         .content {
