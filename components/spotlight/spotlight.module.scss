@@ -25,7 +25,7 @@
     }
   }
 
-  &:before {
+  .overlay {
     background-image: url('/images/overlay.png');
     content: '';
     display: block;
@@ -33,10 +33,11 @@
     left: 0;
     top: 0;
     width: 100%;
+    opacity: 50%;
   }
 
   .image.main {
-    display: none;
+    // display: none;
     img {
       position: relative;
     }
@@ -83,7 +84,7 @@
 
   &.left, &.right {
     .content {
-      height: 101%;
+      height: 100%;
       padding: $size-wrapper-pad-tb $size-wrapper-pad-lr;
       top: 0;
       width: 28em;
