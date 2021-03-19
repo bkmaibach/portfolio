@@ -14,6 +14,7 @@ export default function Spotlight({edgeStyle, id, nextId, imgSrc, children}:
           src={imgSrc}
           alt=""
           layout='fill'
+          objectFit="cover"
         />
       </div>
     </Parallax>
