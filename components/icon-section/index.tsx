@@ -1,6 +1,6 @@
 import styles from './icon-section.module.scss'
 import utilStyles from 'styles/utils.module.scss'
-import { cn } from 'lib/util'
+import { cn } from 'lib/cn'
 export default function IconSection({ title, text, faIcon }: {
   title: string,
   text: string,

@@ -1,7 +1,7 @@
 @import '/styles/libs/vars';
 @import '/styles/libs/functions';
 @import '/styles/libs/mixins';
-@import '/styles/libs/variables';
+@import '/styles/libs/vars';
 @import '/styles/libs/vendor';
 @import '/styles/libs/breakpoints';
 @import '/styles/libs/html-grid';
@@ -25,19 +25,20 @@
     }
   }
 
-  &:before {
-    background-image: url('/images/overlay.png');
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
   .image.main {
-    display: none;
+    // display: none;
 
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-image: url('/images/overlay.png');
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+    }
     img {
       position: relative;
     }
@@ -50,6 +51,7 @@
     border-style: solid;
     opacity: 1;
     position: absolute;
+    z-index: 2;
   }
 
   .gotoNext {
@@ -57,6 +59,7 @@
     @include vendor('transition', 'transform 0.75s ease, opacity 1s ease-in');
     @include vendor('transition-delay', '0.5s');
     opacity: 1;
+    z-index: 3;
   }
 
   &.top, &.bottom {
@@ -84,7 +87,7 @@
 
   &.left, &.right {
     .content {
-      height: 101%;
+      height: 100%;
       padding: $size-wrapper-pad-tb $size-wrapper-pad-lr;
       top: 0;
       width: 28em;
@@ -141,59 +144,78 @@
       }
     }
   }
+}
 
-	@include breakpoint('<=medium') {
 
-		$size-wrapper-pad-tb: 4.5em;
-		$size-wrapper-pad-lr: 2.5em;
+@include breakpoint('<=large') {
 
-			.spotlight {
-				background-attachment: scroll;
-				height: auto;
+  $size-wrapper-pad-tb: 4.5em;
+  $size-wrapper-pad-lr: 2.5em;
 
-				.image.main {
-					display: block;
-					margin: 0;
-					max-height: 40vh;
-					overflow: hidden;
-				}
+    .spotlight {
+      &.top {
+        .content {
+          padding: ($size-wrapper-pad-tb * 0.85) 0 (($size-wrapper-pad-tb * 0.85) - _size(element-margin)) 0;
+        }
+      }
 
-				.content {
-					background-color: _palette(bg);
-					border-width: 0 !important;
-					border-top-width: 0.35em !important;
-					bottom: auto !important;
-					left: auto !important;
-					padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
-					position: relative;
-					right: auto !important;
-					text-align: center;
-					top: auto !important;
-					width: 100% !important;
+      &.bottom {
+        .content {
+          padding: ($size-wrapper-pad-tb * 0.85) 0 (($size-wrapper-pad-tb * 1.1) - _size(element-margin)) 0;
+        }
+      }
 
-					.actions {
-						@include vendor('justify-content', 'center');
-						width: 100%;
-						margin-left: 0;
+      &.left, &.right {
+        .content {
+          padding: $size-wrapper-pad-tb $size-wrapper-pad-lr;
+          width: 25em;
+        }
+      }
+    }
+}
 
-						li {
-							&:first-child {
-								padding-left: 0;
-							}
-						}
-					}
-				}
+@include breakpoint('<=medium') {
 
-				.gotoNext {
-					display: none;
-				}
-			}
-	}
+  $size-wrapper-pad-tb: 4.5em;
+  $size-wrapper-pad-lr: 2.5em;
 
-  @include breakpoint('<=small') {
+    .spotlight {
 
-		$size-wrapper-pad-tb: 3.25em;
-		$size-wrapper-pad-lr: 1.5em;
+      .content {
+        background-color: _palette(bg);
+        border-width: 0 !important;
+        border-top-width: 0.35em !important;
+        padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
+        text-align: center;
+        top: auto !important;
+        width: 100% !important;
+
+        .actions {
+          @include vendor('justify-content', 'center');
+          width: 100%;
+          margin-left: 0;
+
+          li {
+            &:first-child {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+
+      .gotoNext {
+        display: none;
+      }
+    }
+}
+
+@include breakpoint('<=small') {
+
+  $size-wrapper-pad-tb: 3.25em;
+  $size-wrapper-pad-lr: 1.5em;
+
+  .spotlight {
+    box-shadow: 0 0.125em 0.5em 0 rgba(0,0,0,0.25);
 
     .gotoNext {
       &:before {
@@ -203,8 +225,6 @@
       }
     }
 
-    box-shadow: 0 0.125em 0.5em 0 rgba(0,0,0,0.25);
-
     .image.main {
       max-height: 60vh;
     }
@@ -213,7 +233,5 @@
       border-top-width: 0.2em !important;
       padding: $size-wrapper-pad-tb $size-wrapper-pad-lr ($size-wrapper-pad-tb - _size(element-margin)) $size-wrapper-pad-lr !important;
     }
-
   }
-
 }

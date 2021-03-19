@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './banner.module.scss'
 import utilStyles from 'styles/utils.module.scss'
-import { cn } from 'lib/util'
+import { cn } from 'lib/cn'
 
 export default function Banner() {
   return (

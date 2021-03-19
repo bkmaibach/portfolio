@@ -1,7 +1,7 @@
 @import '/styles/libs/vars';
 @import '/styles/libs/functions';
 @import '/styles/libs/mixins';
-@import '/styles/libs/variables';
+@import '/styles/libs/vars';
 @import '/styles/libs/vendor';
 @import '/styles/libs/breakpoints';
 @import '/styles/libs/html-grid';
@@ -16,49 +16,9 @@
 
   &.style2 {
     background: _palette(accent1);
-
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    select,
-    textarea {
-      &:focus {
-        border-color: _palette(border2);
-      }
-    }
-
-    input[type="submit"],
-    input[type="reset"],
-    input[type="button"],
-    .button {
-      &:hover, &:active {
-        background-color: _palette(border-bg) !important;
-        box-shadow: inset 0 0 0 1px _palette(border2) !important;
-        color: _palette(fg-bold) !important;
-      }
-
-      &:active {
-        background-color: _palette(border2-bg) !important;
-      }
-
-      &.primary {
-        background-color: _palette(fg-bold);
-        color: _palette(accent1) !important;
-
-        &:hover, &:active {
-          background-color: _palette(border-bg) !important;
-          box-shadow: inset 0 0 0 1px _palette(border2) !important;
-          color: _palette(fg-bold) !important;
-        }
-
-        &:active {
-          background-color: _palette(border2-bg) !important;
-        }
-      }
-    }
   }
 
-  &.fade-down {
+  &.fadeDown {
     > .container {
       @include vendor('transform', 'translate(0,0)');
       @include vendor('transition', 'transform 1s ease, opacity 1s ease');
@@ -73,7 +33,7 @@
     }
   }
 
-  &.fade-up {
+  &.fadeUp {
     > .container {
       @include vendor('transform', 'translate(0,0)');
       @include vendor('transition', 'transform 1s ease, opacity 1s ease');
