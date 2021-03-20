@@ -25,8 +25,7 @@
     }
   }
 
-  .image.main {
-    // display: none;
+  .main {
 
     &:before {
       content: '';
@@ -98,7 +97,6 @@
     .content {
       border-right-width: 0.35em;
       left: 0;
-      border-color: _palette(accent4);
     }
   }
 
@@ -107,6 +105,24 @@
       border-left-width: 0.35em;
       right: 0;
       border-color: _palette(accent3);
+    }
+  }
+
+  &.accent1 {
+    .content {
+      border-color: _palette(accent1);
+    }
+  }
+
+  &.accent3 {
+    .content {
+      border-color: _palette(accent3);
+    }
+  }
+
+  &.accent4 {
+    .content {
+      border-color: _palette(accent4);
     }
   }
 
@@ -223,10 +239,6 @@
         margin: -0.4em 0 0 -0.6em;
         width: 1.2em;
       }
-    }
-
-    .image.main {
-      max-height: 60vh;
     }
 
     .content {

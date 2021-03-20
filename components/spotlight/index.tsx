@@ -4,11 +4,11 @@ import styles from './spotlight.module.scss'
 import utilStyles from 'styles/utils.module.scss'
 import { cn } from 'lib/cn'
 
-export default function Spotlight({edgeStyle, id, nextId, imgSrc, children}:
-  {edgeStyle: string, id: string, nextId: string, imgSrc: string, children: React.ReactNode}) {
+export default function Spotlight({edgeStyle, accentStyle, id, nextId, imgSrc, children}:
+  {edgeStyle: string, accentStyle: string, id: string, nextId: string, imgSrc: string, children: React.ReactNode}) {
   return (
-    <section id={id} className={cn(styles.spotlight, edgeStyle)}>
-    <Parallax className={cn(styles.image, utilStyles.image, utilStyles.fit, styles.main)} y={[-75, 75]} tagOuter="span">
+    <section id={id} className={cn(styles.spotlight, edgeStyle, accentStyle)}>
+    <Parallax className={cn(utilStyles.image, utilStyles.fit, styles.main)} y={[-75, 75]} tagOuter="span">
       <div className={utilStyles.overlay}>
         <Image
           src={imgSrc}

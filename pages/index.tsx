@@ -14,6 +14,7 @@ import wrapperStyles from 'components/wrapper/wrapper.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from 'lib/posts'
 import { cn } from 'lib/cn'
+import { useIsMediumOrSmallerDevice } from 'lib/use-is-small-device'
 
 export default function Home({ allPostsData }: {
   allPostsData: {
@@ -22,11 +23,12 @@ export default function Home({ allPostsData }: {
     id: string
   }[]
 }) {
+  const isMediumOrSmallerDevice = useIsMediumOrSmallerDevice()
 
   return (
     <Layout>
       <Banner />
-      <Spotlight edgeStyle={spotlightStyles.bottom} id='one' nextId='two' imgSrc='/images/pic02.jpg'>
+      <Spotlight edgeStyle={spotlightStyles.bottom} accentStyle={spotlightStyles.accent1} id='one' nextId='two' imgSrc='/images/pic02.jpg'>
         <div className="container">
           <div className="row">
             <div className="col-4 col-12-medium">
@@ -52,7 +54,7 @@ export default function Home({ allPostsData }: {
           </div>
         </div>
       </Spotlight>
-      <Spotlight edgeStyle={spotlightStyles.right} id='two' nextId='three' imgSrc='/images/pic03.jpg'>
+      <Spotlight edgeStyle={!isMediumOrSmallerDevice ? spotlightStyles.right : spotlightStyles.bottom} accentStyle={spotlightStyles.accent3} id='two' nextId='three' imgSrc='/images/pic03.jpg'>
         <header>
           <h2>Interdum amet non magna accumsan</h2>
           <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
@@ -62,7 +64,7 @@ export default function Home({ allPostsData }: {
           <li><Button>Learn More</Button></li>
         </ul>
       </Spotlight>
-      <Spotlight edgeStyle={spotlightStyles.left} id='three' nextId='four' imgSrc='/images/pic04.jpg'>
+      <Spotlight edgeStyle={!isMediumOrSmallerDevice ? spotlightStyles.left : spotlightStyles.bottom} accentStyle={spotlightStyles.accent4} id='three' nextId='four' imgSrc='/images/pic04.jpg'>
         <header>
           <h2>Interdum amet non magna accumsan</h2>
           <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
