@@ -24,7 +24,6 @@ export default function Home({ allPostsData }: {
   }[]
 }) {
   const isMediumOrSmallerDevice = useIsMediumOrSmallerDevice()
-
   return (
     <Layout>
       <Banner />
