@@ -8,7 +8,6 @@ import buttonStyles from './button/button.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import { cn } from 'lib/cn'
-import { useIsSmallDevice } from 'lib/use-is-small-device'
 
 const name = 'Keith Maibach'
 export const siteTitle = 'Keith Maibach Portfolio'
@@ -18,11 +17,10 @@ export default function Layout({
 }: {
   children: React.ReactNode
 }) {
-  const isSmallDevice = useIsSmallDevice()
   const [navVisible, setNavVisible] = useState(false)
   return (
     <ParallaxProvider>
-      <div id={styles.layout} className={cn(styles.landing, (navVisible && isSmallDevice) ? styles.navPanelVisible : '')}>
+      <div id={styles.layout} className={cn(styles.landing, navVisible ? styles.navPanelVisible : '')}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
@@ -42,7 +40,6 @@ export default function Layout({
           <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
           <title>{siteTitle}</title>
         </Head>
-        {isSmallDevice && <>
           <div id={styles.titleBar}>
             <a className={styles.toggle} onClick={() => setNavVisible(!navVisible)}></a>
             <span className={styles.title}>
@@ -57,8 +54,7 @@ export default function Layout({
               <a className={cn(styles.link, styles.depth0)}>Education</a>
             </nav>
           </div>
-        </>}
-        {!isSmallDevice && <header id={styles.header}>
+        <header id={styles.header}>
           <h1 id="logo"><Link href="/">Keithernet Portfolio</Link></h1>
           <nav id="nav">
             <ul>
@@ -69,7 +65,7 @@ export default function Layout({
               <li><Button className={cn(buttonStyles.nav, buttonStyles.primary)}>Get in Touch</Button></li>
             </ul>
           </nav>
-        </header>}
+        </header>
         {children}
         <footer id={styles.footer}>
           <ul className={cn(utilStyles.icons, styles.icons)}>
