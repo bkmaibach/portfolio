@@ -1,8 +1,27 @@
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
+import Fade from 'react-reveal/Fade';
 import styles from "./spotlight.module.scss";
 import utilStyles from "styles/utils.module.scss";
 import { cn } from "lib/cn";
+
+function ContentHOC(edgeStyle, children) {
+  const innerDiv = <div className={styles.content}>{children}</div>
+  switch (edgeStyle) {
+    case styles.left:
+      return <Fade ssrReveal left>
+        {innerDiv}
+      </Fade>
+    case styles.right:
+      return <Fade ssrReveal right>
+      {innerDiv}
+    </Fade>
+    case styles.bottom:
+      return <Fade ssrReveal bottom>
+      {innerDiv}
+    </Fade>
+  }
+}
 
 export default function Spotlight({
   edgeStyle,
@@ -30,7 +49,7 @@ export default function Spotlight({
           <Image src={imgSrc} alt="" layout="fill" objectFit="cover" />
         </div>
       </Parallax>
-      <div className={styles.content}>{children}</div>
+      {ContentHOC(edgeStyle, children)}
       <a
         href={`#${nextId}`}
         className={cn(styles.gotoNext, utilStyles.gotoNext)}

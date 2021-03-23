@@ -1,6 +1,4 @@
 import { GetStaticProps } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import styles from "./home.module.scss";
 import Layout from "../components/layout";
 import Banner from "../components/banner";
